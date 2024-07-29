@@ -1,0 +1,387 @@
+test 1 - empty_file
+empty_file will take any file it is given as an argument and empty it, for instance, so if a code were to contain any of the following:
+
+123213
+minoawnfiaweniw
+g
+etc
+
+after this function is called it should appear like so:
+
+
+
+test 2 - writing into file
+this function will takes the various components of a current game and store it in files, including disabeld buttons, the gameboard, whos turn it is, colours, etc.
+
+as a test: if currently the game was currently like this:
+
+red_list_pieces = [0, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 1, 1, 0]
+[1, 0, 0, 1, 0, 0, 1]
+
+blue_list_pieces = [1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 1, 1, 0]
+
+community_gameboard = [1, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[1, 0, 1, 0, 0, 1, 0]
+[1, 0, 1, 0, 1, 1, 0]
+[1, 0, 1, 1, 1, 1, 1]
+
+and the theme was blue, it was the 2nd players turn, and the 1st and 6th buttons were disabled, the following files should contain:
+
+red_saved_file.txt: 
+[0, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 1, 1, 0]
+[1, 0, 0, 1, 0, 0, 1]
+
+blue_saved_file.txt: 
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 1, 1, 0]
+
+community_game.txt:
+[1, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[1, 0, 1, 0, 0, 1, 0]
+[1, 0, 1, 0, 1, 1, 0]
+[1, 0, 1, 1, 1, 1, 1]
+
+current_player.txt:
+2
+
+disabled_buttons.txt:
+0
+5
+
+saved_colours.txt:
+blue
+
+test 3 - Loaded game creator 
+this function will takes the various components of a current game that have been previously stored in a file and assign the info to variables again to be used in a new game.
+
+as a test: if currently the files contained the following:
+
+red_saved_file.txt: 
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 1, 0, 1, 1]
+[1, 0, 1, 0, 0, 1, 0]
+
+blue_saved_file.txt: 
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 1]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 1, 1, 0, 1]
+
+
+community_game.txt:
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 1]
+[1, 0, 1, 1, 0, 1, 1]
+[1, 1, 1, 1, 1, 1, 1]
+
+current_player.txt:
+1
+
+disabled_buttons.txt:
+
+saved_colours.txt:
+blue
+
+then the game would look like this, with the R representing the first players white pieces, and the Y representing the second players blue pieces (becuase it would be blue mode)
+
+Player 1's turn
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, Y, 0, 0, 0]
+[0, 0, 0, R, 0, 0, 0]
+[0, 0, 0, Y, 0, 0, Y]
+[Y, 0, R, R, 0, R, R]
+[R, Y, R, Y, Y, R, Y]
+Click Click Click Click Click Click Click Click
+
+another test:
+red_saved_file.txt: 
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[0, 0, 1, 0, 0, 0, 0]
+[1, 0, 0, 1, 0, 1, 1]
+
+blue_saved_file.txt: 
+[0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[0, 0, 1, 0, 0, 0, 0]
+[1, 0, 0, 1, 0, 1, 0]
+[0, 0, 1, 0, 0, 0, 0]
+
+
+
+community_game.txt:
+[0, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[1, 0, 0, 0, 0, 1, 0]
+[1, 0, 1, 0, 0, 1, 0]
+[1, 0, 1, 1, 0, 1, 0]
+[1, 0, 1, 1, 0, 1, 1]
+
+current_player.txt:
+2
+
+disabled_buttons.txt:
+5
+
+saved_colours.txt:
+emo
+
+then the game would look like this:
+
+(pretend that y and r are swapped this time)
+
+Player 2's turn
+[0, 0, 0, 0, 0, Y, 0]
+[R, 0, 0, 0, 0, R, 0]
+[Y, 0, 0, 0, 0, Y, 0]
+[R, 0, Y, 0, 0, R, 0]
+[Y, 0, R, Y, 0, Y, 0]
+[R, 0, Y, R, 0, R, Y]
+Click Click Click Click Click (disabled fifth button) Click
+
+
+test 4 - no saved game error message
+this function will display an error window if the user attempts to load in a game with nothing saved. Essentially, it works by checking if saved colours is empty, because technically that file always needs to be filled if a game is saved, because there cannot be no colours if a game is running
+
+testing: if the contents of saved_colours.txt appear like the following:
+
+
+
+Then the error window should appear. It is simply a short window (as there are tall and short windows) with the error message displayed at the top "There is no saved game." and then an option to click a close button at the bottom, that will return the user to the settings page. Aditionally, the colours should align with the current theme. If the pink theme is selected, the bg colour would be pink, or if the emo mode was selected, the background would be black.
+
+test 5 - make window
+anytime this function is called at all, it makes an empty large window that is coloured the bg colour of the selected theme all over. 
+
+testing:
+if the theme in pink:
+the large window will be pink
+
+if the theme is blue:
+the large window will be white
+
+if the theme is emo:
+the large window will be black
+
+if the theme is original:
+the large window will be blue
+
+test 6- winner
+winner will either be able to display a draw or winner label depending on the winner.
+
+testing:
+if when winner was called, all seven buttons were disabled, or in other words this conditional was true:
+if first_button["state"] == DISABLED and second_button["state"] == DISABLED and third_button["state"] == DISABLED and fourth_button["state"] == DISABLED and fifth_button["state"] == DISABLED and sixth_button["state"] == DISABLED and seventh_button["state"] == DISABLED:
+
+AND when the function was called its arguent was "Draw"
+
+then a window will appear displaying the words Draw! and then a button to return to the home page
+
+otherwise
+
+if the current_player_colour is equal to colour1, so in other words is either "red", "white", "#DB819F" or "#0A3F37", then although the button will remain the same, the text will display that player 1 won
+
+OTHERWISE (so in other words if the current_player_colour is equal to "#90CAF9", "#014275", "yellow" or "#E0BDE6") then the title at the top should instead display that player 2 won
+
+test 7 - home_page
+
+home page is a function that simply makes a homepage evertime it is called. There will be a welcome title at the top, a start button located in the middle that will take the user to another window and will start a new game, and a settings button at the bottom that leads to the setting window with various options. It should be same thing every single times, with the sole difference of colours. 
+
+If the code is being run for the first time; it should be the original theme (blue background), if it's pink it should be pink coloured, blue should be blue and white, and emo should consist of blacks and grays.
+it should follow the following format:
+
+            Welcome to Connect 4!
+            
+                  Start
+                  
+                Settings
+
+test 8 - settings
+settings page is a function that makes a settings page everytime it is called. it creates a window everytime the user clicks the settings button on the homepage, and on it will appear a settings title, two button options (load saved game and colours) and the back button. The load saved game would call another function that attempts to load the game and displays an error window otherwise, and the colour window leads to another window that shows the colour mode options. The back button calls on the home page function to go to othe home page. Once again, the colours should be correlating to the theme (blue - blueish theme, pink is pink, original is blue and other colours, emo is dark). 
+
+test 8 - colour window
+settings page is a function that makes a colour mode selecting page everytime it is called. it creates a window everytime the user clicks the colour option in the settings, and on it will appear a colour title, and 4 colour options.
+
+if the user were to select the button that says pink then the colour assigner function would be called with the argument "pink". Therefore, the following variables would be assigned the following values:
+
+bg_colour = "pink"
+  piece_colour = "pink"
+  button_colour = "#F389AD"
+  font_colour = "white"
+  title_colour = "#F389AD"
+  colour1 = "#DB819F"
+  colour2 = "#E0BDE6"
+  current_player_colour = colour1
+
+if the user were to select the button that says original then the colour assigner function would be called with the argument "original". Therefore, the following variables would be assigned the following values: 
+  bg_colour = "blue"
+  piece_colour = "black"
+  button_colour = "white"
+  font_colour = "black"
+  title_colour = "white"
+  colour1 = "red"
+  colour2 = "yellow"
+  current_player_colour = colour1
+
+if the user were to select the button that says emo then the colour assigner function would be called with the argument "emo". Therefore, the following variables would be assigned the following values:
+
+  bg_colour = "black"
+  piece_colour = "gray"
+  button_colour = "gray"
+  font_colour = "white"
+  title_colour = "gray"
+  colour1 = "#0A3F37"
+  colour2 = "#014275"
+  current_player_colour = colour1
+
+if the user were to select the button that says blue then the colour assigner function would be called with the argument "blue". Therefore, the following variables would be assigned the following values:
+
+  bg_colour = "white"
+  piece_colour = "#1E88E5"
+  button_colour = "#90CAF9"
+  font_colour = "white"
+  title_colour = "#90CAF9"
+  colour1 = "white"
+  colour2 = "#90CAF9"
+  current_player_colour = colour1
+
+It's important to note that the page would first be created with whatever mode was previously used, and that the game will not swtich themes until the user exits the window back to the home page. Aditionally, there is a back button that calls the home page function so the user can return.
+
+test 9 - game_setup
+this function recreates the game page everytime the user clicks the start button on the home page to start the game again. Essentially, depending on the theme, it will create the boaord with 42 empty spots, and then seven buttons along the bottom for the user to select which column they wish to place their piece in. Then, at the top will be displayed the player whos turn it is, then to the top right side there will also be a home button and save progress button. There are some things to note:
+
+1) it this function is called when the game is in saved mode (aka the variable game mode is set to "saved") then the function will NOT make new emty 2D lists and will NOT automatically display that it is player 1's turn, but otherwise it will
+
+once the user starts playing, the baord will continuously keep updating until a player draws, wins or leaves the game. Clicking home will call the home page function and the home page will reapear. Cliking save progress will call the other saving functions and the progress will be saved to files.
+
+test 10 - button maker
+Button maker is extremely simply. Everytime it is called, it will simply make seven buttons lined up horizontaly across the bottom, and then will also make the following dictionary:
+
+button_dict = {0 : first_button, 1: second_button, 2 : third_button, 3 : fourth_button, 4: fifth_button, 5 : sixth_button, 6: seventh_button}
+
+every button will call on the playing function, with the sole difference that every button wil have a different argument representing the column, as seen in button_dict. 0 is the first_button, 1 is the second and so on. Please also note that coulurs will vary depending on the theme
+
+Test 11 - Playing function
+playing function is essentially how the game continues moving. It is in charge of making piece objects, switching colours, swtiching the title at the top of the gameboard, checking for wins, checking for draws, disabling for buttons, etc.
+
+For example, if the game was currently looking like this:
+
+Community gameboard
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 1, 1, 1, 1, 1, 0]
+
+Red list pieces
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 1, 0, 1, 0, 0]
+
+Blue list pieces
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 1, 0, 1, 0]
+
+and the board looked something like this (first player is R, second is Y)
+
+player 1's turn
+[0, 0, 0, 0, 0, 0, 0]
+[R, 0, 0, 0, 0, 0, 0]
+[Y, 0, 0, 0, 0, 0, 0]
+[R, 0, 0, 0, 0, 0, 0]
+[Y, 0, 0, 0, 0, 0, 0]
+[R, Y, R, Y, R, Y, 0]
+Click Click Click Click Click Click Click
+
+and the current_player_colour would be colour1
+
+and the first user had selected the first button, we would see these changes:
+
+Community gameboard
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[1, 1, 1, 1, 1, 1, 0]
+
+Red list pieces
+[1, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 1, 0, 1, 0, 0]
+
+Blue list pieces
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 1, 0, 1, 0]
+
+and the board would look like this:
+
+player 2's turn
+[R, 0, 0, 0, 0, 0, 0]
+[R, 0, 0, 0, 0, 0, 0]
+[Y, 0, 0, 0, 0, 0, 0]
+[R, 0, 0, 0, 0, 0, 0]
+[Y, 0, 0, 0, 0, 0, 0]
+[R, Y, R, Y, R, Y, 0]
+disabled Click Click Click Click Click Click
+
+and the current_player_colour would be colour2
+
+please note that this function also does tons of other things like checking if all the buttons are disabled, or if there was a win, etc, however its difficult to showcase in wrting:
+
+win example (PERSONAL gameboard, not commmunity)
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[1, 1, 1, 0, 0, 0, 0]
+[0, 1, 0, 1, 0, 1, 0]
+
+If this player clicked the 4th button (assuming its their turn) and the spot is empty then they would win. regardless, there is a whole other function that does the checking, I just wanted to demonstrate that this function calls on the other. Another instance is as follows:
+
+if the gameboard had only a single spot lleft and the final piece would not make four in a row, the game would call the winer function on draw mode, causing the draw message to pop up
